@@ -15,19 +15,23 @@ while chat.is_alive():
         print(f"{c.author.name}: {msg}")
 
         # 2. Plain text command checks
-        if msg == "w":
+        if msg == "!w":
             pydirectinput.press('w')
         
-        elif msg == "jump":
+        elif msg == "!jump":
             pydirectinput.press('space')
             
-        elif msg == "left":
+        elif msg == "!left":
             pydirectinput.keyDown('a')
             time.sleep(0.5)
             pydirectinput.keyUp('a')
             
-        elif msg == "click":
+        elif msg == "!break":
             pydirectinput.click()
+        elif msg == "!place":
+            pydirectinput.leftclick()
+        elif msg == "!inv":
+            pydirectinput.press("e")
 
         # Small pause so it doesn't crash from checking too fast
         time.sleep(0.05)
