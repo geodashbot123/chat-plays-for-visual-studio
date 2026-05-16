@@ -1,0 +1,33 @@
+import pytchat
+import pydirectinput
+import time
+
+# 1. Setup the connection
+# Replace with your YouTube Video ID (the part after v=)
+chat = pytchat.create(video_id="YOUR_VIDEO_ID")
+
+print("Listening for chat commands...")
+
+while chat.is_alive():
+    for c in chat.get().sync_items():
+        # Get the message and clean it up
+        msg = c.message.lower().strip()
+        print(f"{c.author.name}: {msg}")
+
+        # 2. Plain text command checks
+        if msg == "w":
+            pydirectinput.press('w')
+        
+        elif msg == "jump":
+            pydirectinput.press('space')
+            
+        elif msg == "left":
+            pydirectinput.keyDown('a')
+            time.sleep(0.5)
+            pydirectinput.keyUp('a')
+            
+        elif msg == "click":
+            pydirectinput.click()
+
+        # Small pause so it doesn't crash from checking too fast
+        time.sleep(0.05)
